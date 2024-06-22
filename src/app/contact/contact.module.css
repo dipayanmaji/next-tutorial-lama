@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+.imgContainer {
+    flex: 1;
+    position: relative;
+    height: 500px;
+}
+
+.img {
+    object-fit: contain;
+}
+
+.formContainer {
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
