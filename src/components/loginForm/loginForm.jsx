@@ -22,7 +22,7 @@ const LoginForm = () => {
             <button>Login with credentials</button>
             <p className={styles.error}>{state?.error}</p>
 
-            <p>Don't have an account? <Link href={'/register'}><b>Register</b></Link></p>
+            <p>Don&apos;t have an account? <Link href={'/register'}><b>Register</b></Link></p>
         </form>
     )
 }
