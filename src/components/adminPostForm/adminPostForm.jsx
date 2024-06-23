@@ -1,8 +1,18 @@
 "use client";
 import { addPost } from '@/lib/action';
 import styles from './adminPostForm.module.css';
-import { useFormState } from 'react-dom';
+import { useFormState, useFormStatus } from 'react-dom';
 import { useEffect, useRef } from 'react';
+
+export function SubmitButton() {
+    const { pending } = useFormStatus();
+
+    return (
+        <button type="submit" disabled={pending ? true : false}>
+            {pending ? "Processing..." : "Add"}
+        </button>
+    );
+}
 
 const AdminPostForm = ({ userId }) => {
 
@@ -21,7 +31,7 @@ const AdminPostForm = ({ userId }) => {
             <input type="text" name='slug' placeholder='Slug' />
             <input type="text" name='img' placeholder='Image URL' />
             <textarea type="text" name='desc' placeholder='Description' rows={10} />
-            <button>Add</button>
+            <SubmitButton />
             <p className='error-msg'>{state && state.error}</p>
         </form>
     )

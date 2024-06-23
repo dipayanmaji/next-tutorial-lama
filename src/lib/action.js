@@ -204,6 +204,27 @@ export const login = async (previousState, formData) => {
     }
 
     try {
+
+        // I used verification here as well for some 1st time login issue
+        // start
+        connectToDb();
+        const user = await User.findOne({ username });
+
+        if (!user) {
+            return { error: "User not exists, try to register." };
+        }
+
+        const isPasswordCorrect = await bcryptjs.compare(
+            password,
+            user.password
+        );
+
+        if (!isPasswordCorrect) {
+            return { error: "Worng password." };
+        }
+        // end
+
+
         await signIn("credentials", { username, password });
     } catch (err) {
         console.log(err);

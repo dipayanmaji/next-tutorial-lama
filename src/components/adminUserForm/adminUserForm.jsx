@@ -1,8 +1,18 @@
 "use client";
 import { addUser } from '@/lib/action';
 import styles from './adminUserForm.module.css';
-import { useFormState } from 'react-dom';
+import { useFormState, useFormStatus } from 'react-dom';
 import { useEffect, useRef } from 'react';
+
+export function SubmitButton() {
+    const { pending } = useFormStatus();
+
+    return (
+        <button disabled={pending ? true : false}>
+            {pending ? "Processing..." : "Add"}
+        </button>
+    );
+}
 
 const AdminUserForm = () => {
 
@@ -25,7 +35,7 @@ const AdminUserForm = () => {
                 <option value="false">No</option>
                 <option value="true">Yes</option>
             </select>
-            <button>Add</button>
+            <SubmitButton />
             <p className='error-msg'>{state && state.error}</p>
         </form>
     )

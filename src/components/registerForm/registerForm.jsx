@@ -1,10 +1,20 @@
 "use client"
 import { register } from '@/lib/action';
 import styles from './registerForm.module.css';
-import { useFormState } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+
+export function SubmitButton() {
+    const { pending } = useFormStatus();
+
+    return (
+        <button disabled={pending ? true : false}>
+            {pending ? "Processing..." : "Register"}
+        </button>
+    );
+}
 
 const RegisterForm = () => {
     const [state, formAction] = useFormState(register, undefined);
@@ -21,7 +31,7 @@ const RegisterForm = () => {
             <input type="email" placeholder="email" name="email" />
             <input type="password" placeholder="password" name="password" />
             <input type="password" placeholder="password again" name="passwordRepeat" />
-            <button>Register</button>
+            <SubmitButton />
             <p className={styles.error}>{state?.error}</p>
 
             <p>Have an account? <Link href={'/login'}><b>Login</b></Link></p>
