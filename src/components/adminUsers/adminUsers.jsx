@@ -12,7 +12,7 @@ const AdminUsers = async() => {
             {users.map(user => (
                 <div className={styles.user} key={user.id}>
                     <div className={styles.detail}>
-                        <Image src={user.img || "/noAvatar.png"} alt='' width={50} height={50} />
+                        <Image src={user.img || "/noavatar.png"} alt='' width={50} height={50} />
                         <span>{user.username}</span>
                     </div>
                     <form action={deleteUser}>
