@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1>Hosted Link</h1>
+<h1>
+  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&width=435&lines=This+is+my+Nextjs+Learning+Project+%F0%9F%A4%A9;Hi+Guys!+%F0%9F%91%8B" alt="Typing SVG" /></a>
+</h1>
 
-## Getting Started
 
-First, run the development server:
+[**View Demo**](https://blog-site-next.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<h1></h1>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![home](https://github.com/dipayanmaji/next-tutorial-lama/assets/121128467/58041978-fbd0-4092-911e-2908f66e4196)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+<h1></h1>
+<h1>Features</h1>
+<ul>
+  <li>Lorem ipsum.</li>
+  <li>Lorem ipsum.</li>
+  <li>Lorem ipsum.</li>
+  <li>Lorem ipsum.</li>
+  <li>Lorem ipsum.</li>
+</ul>
+<h1></h1>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+![admin](https://github.com/dipayanmaji/next-tutorial-lama/assets/121128467/382acdc4-34bc-4788-a03e-7f0478b8f644)
 
-## Learn More
+<h1></h1>
+<h1>Tech Stack</h1>
+<ul>
+  <li>Next.js</li>
+  <li>Auth.js</li>
+  <li>React.js</li>
+  <li>JavaScript</li>
+  <li>CSS</li>
+  <li>HTML</li>
+</ul>
+<h1></h1>
 
-To learn more about Next.js, take a look at the following resources:
+![blog](https://github.com/dipayanmaji/next-tutorial-lama/assets/121128467/6706eb7f-a6ec-4740-b6fb-491155cbdcde)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<h1></h1>
+<h1>Description</h1>
+<ul>
+  <li>Lorem ipsum.</li>
+  <li>Lorem ipsum.</li>
+  <li>Lorem ipsum.</li>
+  <li>Lorem ipsum.</li>
+  <li>Lorem ipsum.</li>
+</ul>
+<h1></h1>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![contact](https://github.com/dipayanmaji/next-tutorial-lama/assets/121128467/c9dcbe16-002b-4f06-acb8-4825fd4c802c)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<h1></h1>
