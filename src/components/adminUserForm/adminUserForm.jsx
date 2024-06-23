@@ -20,6 +20,7 @@ const AdminUserForm = () => {
     const formRef = useRef();
 
     useEffect(() => {
+        state.error = "";
         state?.user && formRef.current.reset();
     }, [state?.user]);
 

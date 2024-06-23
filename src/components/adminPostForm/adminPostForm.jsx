@@ -20,6 +20,7 @@ const AdminPostForm = ({ userId }) => {
     const formRef = useRef();
 
     useEffect(() => {
+        state.error = "";
         state?.postSlug && formRef.current.reset();
     }, [state?.postSlug]);
 

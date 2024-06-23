@@ -15,3 +15,6 @@ export const connectToDb = async () => {
         throw new Error(error);
     }
 }
+
+
+export const imgRegex = /https:\/\/avatars\.githubusercontent\.com\/u\/\d+\?v=\d+|https:\/\/.*\.(jpg|jpeg|png)/gm;

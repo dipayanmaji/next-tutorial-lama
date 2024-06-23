@@ -11,7 +11,7 @@ const AdminUsers = async () => {
             <h1>Users</h1>
             <div className={styles.container}>
                 {users.map(user => (
-                    <div className={styles.user} key={user.id}>
+                    user.username === "admin" ? "" : <div className={styles.user} key={user.id}>
                         <div className={styles.detail}>
                             <Image src={user.img || "/noavatar.png"} alt='' width={50} height={50} />
                             <span>{user.username}</span>

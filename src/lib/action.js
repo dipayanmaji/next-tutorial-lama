@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { Post, User } from "./models";
-import { connectToDb } from "./utils";
+import { connectToDb, imgRegex } from "./utils";
 import { signIn, signOut } from "./auth";
 import bcryptjs from "bcryptjs";
 
@@ -25,6 +25,11 @@ export const addPost = async (prevState, formData) => {
     if (!slug.trim()) {
         return { error: "Post slug missing" };
     }
+
+    if (img && !img.match(imgRegex)) {
+        return { error: "Provide https:... .jpg/.jpeg/.png image url or left the field blank." };
+    }
+
     if (!desc.trim()) {
         return { error: "Post description missing" };
     }
@@ -83,6 +88,9 @@ export const addUser = async (prevState, formData) => {
     if (!username.trim()) return { error: "Username missing" };
     if (!email.trim()) return { error: "Email missing" };
     if (!password.trim()) return { error: "Password missing" };
+    if (img && !img.match(imgRegex)) {
+        return { error: "Provide https:... .jpg/.jpeg/.png image url or left the field blank." };
+    }
 
     const salt = await bcryptjs.genSalt(10);
     const hashedPassword = await bcryptjs.hash(password, salt);
@@ -237,6 +245,7 @@ export const login = async (previousState, formData) => {
 }
 
 
+// CONTACT US FUNCTION
 export const contactUs = async (prevState, formData) => {
     try {
 
@@ -259,7 +268,8 @@ export const contactUs = async (prevState, formData) => {
         const result = await response.json();
         if (result.success) {
             console.log(result);
-            prevState.count++;
+            prevState.count = prevState.count ? prevState.count + 1 : 1;
+            prevState.error = "";
             return prevState;
         }
 
