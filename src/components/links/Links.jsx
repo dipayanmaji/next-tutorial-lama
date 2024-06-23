@@ -4,10 +4,11 @@ import NavLink from "../navLink/navLink";
 import styles from './links.module.css';
 import Image from "next/image";
 import { handleLogout } from "@/lib/action";
-import { auth } from "@/lib/auth";
+import { IoMdArrowDropdown } from "react-icons/io";
 
 const Links = ({ session }) => {
     const [open, setOpen] = useState(false);
+    const [openLogout, setOpenLogout] = useState(false);
 
     const links = [
         {
@@ -29,26 +30,44 @@ const Links = ({ session }) => {
     ]
 
     // Temporary
-    const isAdmin = true;
+    // const isAdmin = true;
 
     return (
         <div className={styles.container}>
+
+            {/* DESTOP VIEW */}
             <div className={styles.links}>
                 {links.map((link) => (
-                    <NavLink item={link} key={link.title} />
+                    <NavLink item={link} key={link.title} setOpen={setOpen} />
                 ))}
                 {session?.user ? (
                     <>
-                        {session.user?.isAdmin && <NavLink item={{ title: "Admin", path: '/admin' }} />}
-                        <form action={handleLogout}>
-                            <button className={styles.logout}>Logout</button>
+                        {session.user?.isAdmin && <NavLink item={{ title: "Admin", path: '/admin' }} setOpen={setOpen} />}
+                        <form action={handleLogout} className={styles.form}>
+                            <div
+                                className={styles.detail}
+                                onClick={() => setOpenLogout(prev => !prev)}
+                            >
+                                <Image
+                                    src={session.user.img || session.user.image || "/noavatar.png"}
+                                    alt=''
+                                    width={30}
+                                    height={30}
+                                />
+                                <span>{session.user.username || session.user.name}</span>
+                                <IoMdArrowDropdown className={openLogout && styles.arrow} />
+                            </div>
+                            <button type="submit" className={`${styles.logout} ${openLogout ? styles.active : ""}`}>
+                                Logout
+                            </button>
                         </form>
                     </>
                 ) : (
-                    <NavLink item={{ title: "Login", path: '/login' }} />
+                    <NavLink item={{ title: "Login", path: '/login' }} setOpen={setOpen} />
                 )}
             </div>
 
+            {/* MOBILE VIEW */}
             <Image
                 src={'/menu.png'}
                 alt="Menu Button"
@@ -57,23 +76,37 @@ const Links = ({ session }) => {
                 onClick={() => setOpen(prev => !prev)}
                 className={styles.menuButton}
             />
-            {
-                open && <div className={styles.mobileLinks}>
-                    {links.map((link) => (
-                        <NavLink item={link} key={link.title} />
-                    ))}
-                    {session?.user ? (
-                        <>
-                            {session?.user.isAdmin && <NavLink item={{ title: "Admin", path: '/admin' }} />}
-                            <form action={handleLogout}>
-                                <button className={styles.logout}>Logout</button>
-                            </form>
-                        </>
-                    ) : (
-                        <NavLink item={{ title: "Login", path: '/login' }} />
-                    )}
-                </div>
-            }
+
+            <div className={`${styles.mobileLinks} ${open && styles.open}`}>
+                {links.map((link) => (
+                    <NavLink item={link} key={link.title} setOpen={setOpen} />
+                ))}
+                {session?.user ? (
+                    <>
+                        {session?.user.isAdmin && <NavLink item={{ title: "Admin", path: '/admin' }} setOpen={setOpen} />}
+                        <form action={handleLogout} className={styles.form}>
+                            <div
+                                className={styles.detail}
+                                onClick={() => setOpenLogout(prev => !prev)}
+                            >
+                                <Image
+                                    src={session.user.img || session.user.image || "/noavatar.png"}
+                                    alt=''
+                                    width={30}
+                                    height={30}
+                                />
+                                <span>{session.user.username || session.user.name}</span>
+                                <IoMdArrowDropdown className={openLogout && styles.arrow} />
+                            </div>
+                            <button type="submit" className={`${styles.logout} ${openLogout ? styles.active : ""}`}>
+                                Logout
+                            </button>
+                        </form>
+                    </>
+                ) : (
+                    <NavLink item={{ title: "Login", path: '/login' }} setOpen={setOpen} />
+                )}
+            </div>
         </div>
     )
 }

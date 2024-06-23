@@ -14,3 +14,23 @@
     gap: 30px;
     border-radius: 5px;
 }
+
+.github {
+    width: 100%;
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: bold;
+    color: var(--bgSoft);
+}
+
+.github svg {
+    font-size: 30px;
+}
+
+.github:hover {
+    opacity: 0.8;
+}

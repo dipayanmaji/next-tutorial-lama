@@ -46,15 +46,16 @@
 .imgContainer {
     flex: 1;
     position: relative;
+    min-height: 250px;
 }
 
 @media (max-width: 1024px) {
     .container {
-        flex-direction: column;
+        flex-direction: column-reverse;
         text-align: center;
     }
 
-    .buttons{
+    .buttons {
         justify-content: center;
     }
 }

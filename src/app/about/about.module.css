@@ -42,6 +42,7 @@
 .imgContainer {
     flex: 1;
     position: relative;
+    min-height: 250px;
 }
 
 .img {

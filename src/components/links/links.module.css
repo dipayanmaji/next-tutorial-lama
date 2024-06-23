@@ -1,27 +1,90 @@
-.links{
+.links {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.logout{
+.form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--bgSoft);
+    border-radius: 50px;
+    padding: 5px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.detail img {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.detail span {
+    text-transform: uppercase;
+    max-width: 90px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.detail svg {
+    transition: 0.3s;
+}
+
+.arrow {
+    rotate: -180deg;
+}
+
+.logout {
     padding: 10px;
     cursor: pointer;
     font-weight: bold;
+    position: absolute;
+    width: 100%;
+    background-color: var(--bgSoft);
+    border: none;
+    color: #ef4444;
+    bottom: -100%;
+    border-radius: 50px;
+    box-shadow: 0 0 2px var(--textSoft) inset;
+    transition: 0.3s;
+
+    transform: translate(0, -100%);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.logout.active {
+    transform: translate(0, 0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.logout:hover {
+    opacity: 0.8;
 }
 
 .menuButton,
-.mobileLinks{
+.mobileLinks {
     display: none;
 }
 
 @media (max-width: 768px) {
-    .links{
+    .links {
         display: none;
     }
 
-    .mobileLinks{
-        position: absolute;
+    .mobileLinks {
+        /* position: absolute; */
+        position: fixed;
         top: 100px;
         right: 0;
         z-index: 1;
@@ -33,10 +96,22 @@
         align-items: center;
         justify-content: center;
         gap: 10px;
+
+        transform: translate(100%, 0);
+        transition: 0.3s;
     }
 
-    .menuButton{
+    .mobileLinks.open {
+        transform: translate(0, 0);
+    }
+
+    .menuButton {
         display: block;
         cursor: pointer;
+    }
+
+    .detail,
+    .logout {
+        background-color: var(--bg);
     }
 }

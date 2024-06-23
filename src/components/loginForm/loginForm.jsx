@@ -19,8 +19,8 @@ const LoginForm = () => {
 
     return (
         <form className={styles.form} action={formAction}>
-            <input type="text" placeholder="username" name="username" />
-            <input type="password" placeholder="password" name="password" />
+            <input type="text" placeholder="Username: admin" name="username" />
+            <input type="password" placeholder="Password: admin" name="password" />
             <SubmitButton />
             <p className={styles.error}>{state?.error}</p>
 

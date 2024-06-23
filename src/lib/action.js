@@ -195,10 +195,20 @@ export const register = async (previousState, formData) => {
         await newUser.save();
         console.log("saved to db");
 
-        return { success: true };
+        // AUTO SIGN IN AFTER REGISTER
+        await signIn("credentials", { username, password });
+
+        // return { success: true };
     } catch (err) {
+        // console.log(err);
+        // return { error: "Something went wrong!" };
+
         console.log(err);
-        return { error: "Something went wrong!" };
+
+        if (err.message.includes("CredentialsSignin")) {
+            return { error: "Invalid username or password" };
+        }
+        throw err;
     }
 }
 

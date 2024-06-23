@@ -7,6 +7,8 @@ export const authConfig = {
         async jwt({ token, user }) {
             if (user) {
                 token.id = user.id;
+                token.username = user.username;
+                token.img = user.img;
                 token.isAdmin = user.isAdmin;
             }
             return token;
@@ -14,6 +16,8 @@ export const authConfig = {
         async session({ session, token }) {
             if (token) {
                 session.user.id = token.id;
+                session.user.username = token.username;
+                session.user.img = token.img;
                 session.user.isAdmin = token.isAdmin;
             }
             return session;
@@ -23,19 +27,20 @@ export const authConfig = {
             const isOnAdminPanel = request.nextUrl?.pathname.startsWith("/admin");
             const isOnBlogPage = request.nextUrl?.pathname.startsWith("/blog");
             const isOnLoginPage = request.nextUrl?.pathname.startsWith("/login");
+            const isOnRegisterPage = request.nextUrl?.pathname.startsWith("/register");
 
             // ONLY ADMIN CAN REACH THE ADMIN DASHBOARD
             if (isOnAdminPanel && !user?.isAdmin) {
                 return false;
             }
 
-            // ONLY AUTHENTICATED USERS CAN REACH THE BLOG PAGE
+            // ONLY UNAUTHENTICATED USERS CAN REACH THE BLOG PAGE
             if (isOnBlogPage && !user) {
                 return false;
             }
 
-            // ONLY UNAUTHENTICATED USERS CAN REACH THE LOGIN PAGE
-            if (isOnLoginPage && user) {
+            // ONLY AUTHENTICATED USERS CAN REACH THE LOGIN/REGISTER PAGE
+            if ((isOnLoginPage && user) || (isOnRegisterPage && user)) {
                 return Response.redirect(new URL("/", request.nextUrl));
             }
 
