@@ -3,6 +3,7 @@ export const authConfig = {
         signIn: "/login",
     },
     providers: [],
+    site: process.env.AUTH_URL,
     callbacks: {
         async jwt({ token, user }) {
             if (user) {
