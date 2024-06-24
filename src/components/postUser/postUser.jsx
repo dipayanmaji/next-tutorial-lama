@@ -27,6 +27,8 @@ const PostUser = async ({ userId }) => {
                 alt='Single Post'
                 width={50} height={50}
                 className={styles.avatar}
+                placeholder='blur'
+                blurDataURL='/noavatar.png'
             />
             <div className={styles.texts}>
                 <span className={styles.title}>Author</span>

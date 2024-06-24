@@ -22,16 +22,15 @@ const AdminUserForm = () => {
     const [usernameValue, setUsernameValue] = useState('');
 
     const handleUsername = (e) => {
-        const value = e.target.value;
-        if (value.charAt(value.length - 1) === " ") return;
+        let value = e.target.value;
+        value = value.split(/\s+/).join("");
 
         setUsernameValue(value.toLowerCase());
     }
 
     useEffect(() => {
-        state.error = "";
         state?.user && formRef.current.reset();
-        setUsernameValue('');
+        state?.user && setUsernameValue('');
     }, [state?.user]);
 
     return (

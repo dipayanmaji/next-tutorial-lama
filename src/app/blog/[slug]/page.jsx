@@ -30,7 +30,7 @@ const SingleBlogPage = async ({ params }) => {
 
     // FETCH DATA WITH AN API
     // const post = await getData(slug);
-    
+
     // FETCH DATA WITHOUT AN API
     const post = await getPost(slug);
     if (!post) return notFound();
@@ -44,6 +44,8 @@ const SingleBlogPage = async ({ params }) => {
                     alt='Single Post'
                     fill
                     className={styles.img}
+                    placeholder='blur'
+                    blurDataURL='/noimage.jpg'
                 />
             </div>
 

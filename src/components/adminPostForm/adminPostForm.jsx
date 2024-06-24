@@ -22,16 +22,16 @@ const AdminPostForm = ({ userId }) => {
     const [slugValue, setSlugValue] = useState('');
 
     const handleSlug = (e) => {
-        const value = e.target.value;
-        if(value.charAt(value.length - 1) === " " || value.charAt(value.length - 1) === "/") return;
+        let value = e.target.value;
+        value = value.trim().split(/\s+/).join("-");
+        value = value.split('/').join("");
 
         setSlugValue(value.toLowerCase());
     }
 
     useEffect(() => {
-        state.error = "";
         state?.postSlug && formRef.current.reset();
-        setSlugValue('');
+        state?.postSlug && setSlugValue('');
     }, [state?.postSlug]);
 
     return (

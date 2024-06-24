@@ -56,6 +56,7 @@ export const addPost = async (prevState, formData) => {
         revalidatePath("/admin");
 
         prevState.postSlug = slug;
+        prevState.error = '';
         return prevState;
     } catch (err) {
         console.log(err);
@@ -118,6 +119,7 @@ export const addUser = async (prevState, formData) => {
         revalidatePath("/admin");
 
         prevState.user = username;
+        prevState.error = "";
         return prevState;
     } catch (err) {
         console.log(err);

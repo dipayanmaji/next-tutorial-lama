@@ -12,9 +12,11 @@ const PostCard = ({ post }) => {
                         alt=''
                         fill
                         className={styles.img}
+                        placeholder='blur'
+                        blurDataURL='/noimage.jpg'
                     />
                 </div>}
-                <span className={styles.date}>01.01.2024</span>
+                <span className={styles.date}>{new Date(post.createdAt).toLocaleDateString()}</span>
             </div>
             <div className={styles.bottom}>
                 <h2 className={styles.title}>{post.title}</h2>

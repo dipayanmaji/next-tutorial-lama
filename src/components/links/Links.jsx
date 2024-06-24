@@ -53,6 +53,8 @@ const Links = ({ session }) => {
                                     alt=''
                                     width={30}
                                     height={30}
+                                    placeholder='blur'
+                                    blurDataURL='/noavatar.png'
                                 />
                                 <span>{session.user.username || session.user.name}</span>
                                 <IoMdArrowDropdown className={openLogout && styles.arrow} />
@@ -94,6 +96,8 @@ const Links = ({ session }) => {
                                     alt=''
                                     width={30}
                                     height={30}
+                                    placeholder='blur'
+                                    blurDataURL='/noavatar.png'
                                 />
                                 <span>{session.user.username || session.user.name}</span>
                                 <IoMdArrowDropdown className={openLogout && styles.arrow} />
