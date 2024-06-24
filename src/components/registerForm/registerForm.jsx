@@ -2,7 +2,7 @@
 import { register } from '@/lib/action';
 import styles from './registerForm.module.css';
 import { useFormState, useFormStatus } from "react-dom";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -19,7 +19,16 @@ export function SubmitButton() {
 const RegisterForm = () => {
     const [state, formAction] = useFormState(register, undefined);
 
-    const router = useRouter();
+    // const router = useRouter();
+
+    const [usernameValue, setUsernameValue] = useState('');
+
+    const handleUsername = (e) => {
+        const value = e.target.value;
+        if (value.charAt(value.length - 1) === " ") return;
+
+        setUsernameValue(value.toLowerCase());
+    }
 
     // useEffect(() => {
     //     state?.success && router.push('./login');
@@ -27,10 +36,10 @@ const RegisterForm = () => {
 
     return (
         <form className={styles.form} action={formAction}>
-            <input type="text" placeholder="username" name="username" />
-            <input type="email" placeholder="email" name="email" />
-            <input type="password" placeholder="password" name="password" />
-            <input type="password" placeholder="password again" name="passwordRepeat" />
+            <input type="text" placeholder="Username" name="username" value={usernameValue} onChange={handleUsername} />
+            <input type="email" placeholder="Email" name="email" />
+            <input type="password" placeholder="Password" name="password" />
+            <input type="password" placeholder="Password Again" name="passwordRepeat" />
             <SubmitButton />
             <p className={styles.error}>{state?.error}</p>
 
