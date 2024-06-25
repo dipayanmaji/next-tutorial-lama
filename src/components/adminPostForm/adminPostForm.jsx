@@ -38,10 +38,10 @@ const AdminPostForm = ({ userId }) => {
         <form action={formAction} ref={formRef} className={styles.container}>
             <h1>Add New Post</h1>
             <input type="hidden" name='userId' value={userId} />
-            <input type="text" name='title' placeholder='Title' />
-            <input type="text" name='slug' placeholder='Slug' value={slugValue} onChange={handleSlug} />
-            <input type="text" name='img' placeholder='Image URL' />
-            <textarea type="text" name='desc' placeholder='Description' rows={10} />
+            <input type="text" name='title' placeholder='Title*' />
+            <input type="text" name='slug' placeholder='Slug*' value={slugValue} onChange={handleSlug} />
+            <input type="text" name='img' placeholder='Image URL (Optional)' />
+            <textarea type="text" name='desc' placeholder='Description*' rows={10} />
             <SubmitButton />
             <p className='error-msg'>{state && state.error}</p>
         </form>

@@ -31,10 +31,10 @@ const ContactForm = () => {
 
     return (
         <form className={styles.form} action={formAction} ref={formRef}>
-            <input type="text" name="name" placeholder="Name and Surname" required />
-            <input type="email" name="email" placeholder="Email Address" required />
+            <input type="text" name="name" placeholder="Name and Surname*" required />
+            <input type="email" name="email" placeholder="Email Address*" required />
             <input type="tel" name="phone" placeholder="Phone Number (Optional)" />
-            <textarea name="message" id="" cols="30" rows="10" placeholder="Message"></textarea>
+            <textarea name="message" id="" cols="30" rows="10" placeholder="Message (Optional)"></textarea>
             <SubmitButton />
             <p className='error-msg'>{state?.error}</p>
             {success && <p>Form submit successfully! I will contact you soon.</p>}
