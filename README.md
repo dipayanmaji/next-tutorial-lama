@@ -13,11 +13,11 @@
 <h1></h1>
 <h1>Features</h1>
 <ul>
-  <li>Lorem ipsum.</li>
-  <li>Lorem ipsum.</li>
-  <li>Lorem ipsum.</li>
-  <li>Lorem ipsum.</li>
-  <li>Lorem ipsum.</li>
+    <li>User authentication via credentials and GitHub</li>
+    <li>Admin dashboard for managing users and blogs</li>
+    <li>Secure blog access for authenticated users</li>
+    <li>Responsive skeleton loader for fast content loading</li>
+    <li>Modular CSS for component styling</li>
 </ul>
 <h1></h1>
 
@@ -30,6 +30,7 @@
   <li>Auth.js</li>
   <li>React.js</li>
   <li>JavaScript</li>
+  <li>MongoDB</li>
   <li>CSS</li>
   <li>HTML</li>
 </ul>
@@ -40,11 +41,10 @@
 <h1></h1>
 <h1>Description</h1>
 <ul>
-  <li>Lorem ipsum.</li>
-  <li>Lorem ipsum.</li>
-  <li>Lorem ipsum.</li>
-  <li>Lorem ipsum.</li>
-  <li>Lorem ipsum.</li>
+    <li>The project is a Next.js blog with user authentication via credentials or GitHub.</li>
+    <li>It features an admin dashboard for managing users and blog posts efficiently.</li>
+    <li>Focuses on Next.js features and modular CSS for enhanced design.</li>
+    <li>Aims to deepen understanding of authentication and content management.</li>
 </ul>
 <h1></h1>
 
