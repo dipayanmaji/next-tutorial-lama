@@ -34,12 +34,12 @@ export const authConfig = {
                 return false;
             }
 
-            // ONLY UNAUTHENTICATED USERS CAN REACH THE BLOG PAGE
+            // ONLY AUTHENTICATED USERS CAN REACH THE BLOG PAGE
             if (isOnBlogPage && !user) {
                 return false;
             }
 
-            // ONLY AUTHENTICATED USERS CAN REACH THE LOGIN/REGISTER PAGE
+            // ONLY UNAUTHENTICATED USERS CAN REACH THE LOGIN/REGISTER PAGE
             if ((isOnLoginPage && user) || (isOnRegisterPage && user)) {
                 return Response.redirect(new URL("/", request.nextUrl));
             }
