@@ -9,7 +9,7 @@ export function SubmitButton() {
 
     return (
         <button disabled={pending ? true : false}>
-            {pending ? "Processing..." : "Login with credentials"}
+            {pending ? "Processing..." : "Login"}
         </button>
     );
 }
