@@ -13,7 +13,7 @@
 <h1></h1>
 <h1>Features</h1>
 <ul>
-    <li>User authentication via credentials and GitHub</li>
+    <li>User authentication via credentials, GitHub and Google</li>
     <li>Admin dashboard for managing users and blogs</li>
     <li>Secure blog access for authenticated users</li>
     <li>Responsive skeleton loader for fast content loading</li>
@@ -41,7 +41,7 @@
 <h1></h1>
 <h1>Description</h1>
 <ul>
-    <li>The project is a Next.js blog with user authentication via credentials or GitHub.</li>
+    <li>The project is a Next.js blog with user authentication via credentials or GitHub or Google.</li>
     <li>It features an admin dashboard for managing users and blog posts efficiently.</li>
     <li>Focuses on Next.js features and modular CSS for enhanced design.</li>
     <li>Aims to deepen understanding of authentication and content management.</li>
