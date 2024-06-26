@@ -2,6 +2,7 @@ import { getUsers } from '@/lib/data';
 import styles from './adminUsers.module.css';
 import { deleteUser } from '@/lib/action';
 import Image from 'next/image';
+import { DeleteButton } from '../deleteButton/deleteButton';
 
 const AdminUsers = async () => {
 
@@ -24,7 +25,8 @@ const AdminUsers = async () => {
                         </div>
                         <form action={deleteUser}>
                             <input type="hidden" name='id' value={user.id} />
-                            <button className={styles.userButton}>Delete</button>
+                            <DeleteButton />
+                            {/* <button className={styles.userButton}>Delete</button> */}
                         </form>
                     </div>
                 ))}

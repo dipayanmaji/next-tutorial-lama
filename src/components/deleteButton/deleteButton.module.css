@@ -1,0 +1,8 @@
+.deleteButton {
+    padding: 5px 10px;
+    background-color: rgba(220, 20, 60, 0.593);
+    color: var(--textColor);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}

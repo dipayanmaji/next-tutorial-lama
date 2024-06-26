@@ -3,6 +3,7 @@ import styles from './adminPosts.module.css';
 import Image from 'next/image';
 import { deletePost } from '@/lib/action';
 import Link from 'next/link';
+import { DeleteButton } from '../deleteButton/deleteButton';
 
 const AdminPosts = async () => {
 
@@ -28,7 +29,8 @@ const AdminPosts = async () => {
                                 <form action={deletePost}>
                                     <Link href={`/blog/${post.slug}`} className={styles.postLink}>Read</Link>
                                     <input type="hidden" name='id' value={post.id} />
-                                    <button className={styles.postButton}>Delete</button>
+                                    <DeleteButton />
+                                    {/* <button className={styles.postButton}>Delete</button> */}
                                 </form>
                             </div>
                         ))
