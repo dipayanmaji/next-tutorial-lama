@@ -66,11 +66,14 @@ export const {
             if (account.provider === "github") {
                 connectToDb();
                 try {
-                    const user = await User.findOne({ email: profile.email });
+                    const userFromEmail = await User.findOne({ email: profile.email });
 
-                    if (!user) {
+                    const providedUserName = profile.login;
+                    const userFromUsername = await User.findOne({ username: providedUserName });
+
+                    if (!userFromEmail && !userFromUsername) {
                         const newUser = new User({
-                            username: profile.login,
+                            username: providedUserName,
                             email: profile.email,
                             img: profile.avatar_url,
                         });
@@ -86,11 +89,15 @@ export const {
             else if (account.provider === "google") {
                 connectToDb();
                 try {
-                    const user = await User.findOne({ email: profile.email });
+                    const userFromEmail = await User.findOne({ email: profile.email });
 
-                    if (!user) {
+                    const providedUserName = profile.given_name.toLowerCase() + profile.family_name.toLowerCase();
+                    const userFromUsername = await User.findOne({ username: providedUserName });
+
+
+                    if (!userFromEmail && !userFromUsername) {
                         const newUser = new User({
-                            username: profile.given_name.toLowerCase() + profile.family_name.toLowerCase(),
+                            username: providedUserName,
                             email: profile.email,
                             img: profile.picture,
                         });
