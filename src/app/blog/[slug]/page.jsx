@@ -4,6 +4,7 @@ import PostUser from '@/components/postUser/postUser';
 import { Suspense } from 'react';
 import { getPost } from '@/lib/data';
 import { notFound } from 'next/navigation'
+import { AuthorSkeleton } from '@/components/skeletons/skeletons';
 // FETCH DATA WITH AN API
 // const getData = async (slug) => {
 //     const res = await fetch(`http://localhost:3000/api/blog/${slug}`);
@@ -55,7 +56,7 @@ const SingleBlogPage = async ({ params }) => {
 
                 <div className={styles.detail}>
 
-                    <Suspense fallback={<div>Loading...</div>}>
+                    <Suspense fallback={<AuthorSkeleton />}>
                         <PostUser userId={post.userId} />
                     </Suspense>
 

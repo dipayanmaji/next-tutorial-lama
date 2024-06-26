@@ -6,7 +6,6 @@ import Image from "next/image";
 import { handleLogout } from "@/lib/action";
 import { useFormStatus } from "react-dom";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { Spinner } from "../loaders/loaders";
 
 export function SubmitButton({ openLogout }) {
     const { pending } = useFormStatus();
@@ -16,7 +15,7 @@ export function SubmitButton({ openLogout }) {
             disabled={pending ? true : false}
             type="submit"
             className={`${styles.logout} ${openLogout ? styles.active : ""}`}>
-            {pending ? <Spinner /> : "Logout"}
+            {pending ? "Processing..." : "Logout"}
         </button>
     );
 }
@@ -74,9 +73,6 @@ const Links = ({ session }) => {
                                 <span>{session.user.username || session.user.name}</span>
                                 <IoMdArrowDropdown className={openLogout && styles.arrow} />
                             </div>
-                            {/* <button type="submit" className={`${styles.logout} ${openLogout ? styles.active : ""}`}>
-                                Logout
-                            </button> */}
                             <SubmitButton openLogout={openLogout} />
                         </form>
                     </>
@@ -118,9 +114,7 @@ const Links = ({ session }) => {
                                 <span>{session.user.username || session.user.name}</span>
                                 <IoMdArrowDropdown className={openLogout && styles.arrow} />
                             </div>
-                            <button type="submit" className={`${styles.logout} ${openLogout ? styles.active : ""}`}>
-                                Logout
-                            </button>
+                            <SubmitButton openLogout={openLogout} />
                         </form>
                     </>
                 ) : (

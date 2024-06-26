@@ -4,6 +4,8 @@
     --text: #fff;
     --textSoft: #e5e5e5;
     --btn: #3673fd;
+    --skeleton-bg: rgba(150, 150, 150, 0.3);
+    --skeleton-shine-color: linear-gradient(to right, rgba(160, 160, 160, 0.1), rgba(160, 160, 160, 0.2), rgba(160, 160, 160, 0.1));
 }
 
 * {

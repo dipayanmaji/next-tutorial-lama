@@ -1,0 +1,218 @@
+/* :root{
+    --skeleton-bg: rgba(150, 150, 150, 0.3);
+    --skeleton-shine-color: rgba(160, 160, 160, 0.3);
+} */
+
+/* Page Skeleton Start */
+.pagewrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.pagecontainer {
+    display: flex;
+    gap: 50px;
+}
+
+.textContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.subtitle,
+.title,
+.desc,
+.imgContainer {
+    width: 100%;
+    background-color: var(--skeleton-bg);
+    position: relative;
+    overflow: hidden;
+    animation: bgupdown 3s infinite;
+}
+
+.imgContainer {
+    flex: 1;
+    min-width: 250px;
+    min-height: 250px;
+}
+
+.subtitle {
+    height: 20px;
+    width: 50%;
+}
+
+.title {
+    height: 30px;
+    width: 70%;
+}
+
+.desc {
+    height: 20px;
+    width: 90%;
+}
+
+
+.subtitle::after,
+.title::after,
+.desc::after,
+.imgContainer::after {
+    position: absolute;
+    z-index: 1;
+    top: -10%;
+    left: -20%;
+    rotate: 10deg;
+    height: calc(100% + 50px);
+    width: 6px;
+    background: var(--skeleton-shine-color);
+    box-shadow: 0 0 10px var(--skeleton-shine-color);
+
+    animation: shimmer 1.5s infinite;
+    content: '';
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Page Skeleton End */
+
+
+/* Form Skeleton Start */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.inputbox {
+    width: 100%;
+    background-color: var(--skeleton-bg);
+    position: relative;
+    overflow: hidden;
+    height: 40px;
+    animation: bgupdown 3s infinite;
+}
+
+.textareabox {
+    width: 100%;
+    background-color: var(--skeleton-bg);
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    animation: bgupdown 3s infinite;
+}
+
+.inputbox::after,
+.textareabox::after {
+    position: absolute;
+    z-index: 1;
+    top: -10%;
+    left: -20%;
+    rotate: 10deg;
+    height: calc(100% + 50px);
+    width: 6px;
+    background: var(--skeleton-shine-color);
+    box-shadow: 0 0 10px var(--skeleton-shine-color);
+
+    animation: shimmer 1.5s infinite;
+    content: '';
+}
+
+/* Form Skeleton End */
+
+
+/* List Skeleton Start*/
+.listcontainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.singlelist {
+    display: flex;
+    gap: 20px;
+}
+
+.userimage {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 50%;
+    background-color: var(--skeleton-bg);
+    position: relative;
+    overflow: hidden;
+    animation: bgupdown 3s infinite;
+}
+
+.userdetail {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    min-width: 100px;
+}
+
+.shortline {
+    width: 50%;
+    height: 15px;
+    background-color: var(--skeleton-bg);
+    position: relative;
+    overflow: hidden;
+    animation: bgupdown 3s infinite;
+}
+
+.longline {
+    width: 80%;
+    height: 15px;
+    background-color: var(--skeleton-bg);
+    position: relative;
+    overflow: hidden;
+    animation: bgupdown 3s infinite;
+}
+
+.userimage::after,
+.shortline::after,
+.longline::after {
+    position: absolute;
+    z-index: 1;
+    top: -10%;
+    left: -20%;
+    rotate: 10deg;
+    height: calc(100% + 50px);
+    width: 6px;
+    background: var(--skeleton-shine-color);
+    box-shadow: 0 0 10px rgba(160, 160, 160, 0.1);
+
+    animation: shimmer 1.5s infinite;
+    content: '';
+}
+
+/* List Skeleton End*/
+
+
+@keyframes bgupdown {
+    0% {
+        background-color: var(--skeleton-bg);
+    }
+
+    50% {
+        background-color: rgba(150, 150, 150, 0.4);
+    }
+
+    100% {
+        background-color: var(--skeleton-bg);
+    }
+}
+
+@keyframes shimmer {
+    100% {
+        left: 120%;
+    }
+}
