@@ -4,7 +4,22 @@ import NavLink from "../navLink/navLink";
 import styles from './links.module.css';
 import Image from "next/image";
 import { handleLogout } from "@/lib/action";
+import { useFormStatus } from "react-dom";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { Spinner } from "../loaders/loaders";
+
+export function SubmitButton({ openLogout }) {
+    const { pending } = useFormStatus();
+
+    return (
+        <button
+            disabled={pending ? true : false}
+            type="submit"
+            className={`${styles.logout} ${openLogout ? styles.active : ""}`}>
+            {pending ? <Spinner /> : "Logout"}
+        </button>
+    );
+}
 
 const Links = ({ session }) => {
     const [open, setOpen] = useState(false);
@@ -59,9 +74,10 @@ const Links = ({ session }) => {
                                 <span>{session.user.username || session.user.name}</span>
                                 <IoMdArrowDropdown className={openLogout && styles.arrow} />
                             </div>
-                            <button type="submit" className={`${styles.logout} ${openLogout ? styles.active : ""}`}>
+                            {/* <button type="submit" className={`${styles.logout} ${openLogout ? styles.active : ""}`}>
                                 Logout
-                            </button>
+                            </button> */}
+                            <SubmitButton openLogout={openLogout} />
                         </form>
                     </>
                 ) : (

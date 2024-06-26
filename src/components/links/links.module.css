@@ -60,6 +60,11 @@
     transform: translate(0, -100%);
     opacity: 0;
     visibility: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
 }
 
 .logout.active {
