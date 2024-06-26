@@ -56,7 +56,7 @@ const Links = ({ session }) => {
                 ))}
                 {session?.user ? (
                     <>
-                        {session.user?.isAdmin && <NavLink item={{ title: "Admin", path: '/admin' }} setOpen={setOpen} />}
+                        {session.user?.isAdmin && <NavLink item={{ title: "Dashboard", path: '/admin' }} setOpen={setOpen} />}
                         <form action={handleLogout} className={styles.form}>
                             <div
                                 className={styles.detail}
@@ -97,7 +97,7 @@ const Links = ({ session }) => {
                 ))}
                 {session?.user ? (
                     <>
-                        {session?.user.isAdmin && <NavLink item={{ title: "Admin", path: '/admin' }} setOpen={setOpen} />}
+                        {session?.user.isAdmin && <NavLink item={{ title: "Dashboard", path: '/admin' }} setOpen={setOpen} />}
                         <form action={handleLogout} className={styles.form}>
                             <div
                                 className={styles.detail}

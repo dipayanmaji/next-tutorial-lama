@@ -3,6 +3,7 @@ import { addUser } from '@/lib/action';
 import styles from './adminUserForm.module.css';
 import { useFormState, useFormStatus } from 'react-dom';
 import { useEffect, useRef, useState } from 'react';
+import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
 
 export function SubmitButton() {
     const { pending } = useFormStatus();
@@ -20,6 +21,7 @@ const AdminUserForm = () => {
     const formRef = useRef();
 
     const [usernameValue, setUsernameValue] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleUsername = (e) => {
         let value = e.target.value;
@@ -29,8 +31,11 @@ const AdminUserForm = () => {
     }
 
     useEffect(() => {
-        state?.user && formRef.current.reset();
-        state?.user && setUsernameValue('');
+        if (state?.user) {
+            formRef.current.reset();
+            setUsernameValue('');
+            setShowPassword(false);
+        }
     }, [state?.user]);
 
     return (
@@ -38,7 +43,13 @@ const AdminUserForm = () => {
             <h1>Add New User</h1>
             <input type="text" name='username' placeholder='Username*' value={usernameValue} onChange={handleUsername} />
             <input type="email" name='email' placeholder='Email*' />
-            <input type="password" name='password' placeholder='Password*' />
+            {/* <input type="password" name='password' placeholder='Password*' /> */}
+            <div className={styles.passwordWrapper}>
+                <input type={showPassword ? "text" : "password"} name="password" placeholder="Password" />
+                <span className={styles.passwordEye} onClick={() => setShowPassword(prev => !prev)}>
+                    {showPassword ? <IoMdEye /> : <IoMdEyeOff />}
+                </span>
+            </div>
             <input type="text" name='img' placeholder='Image URL (Optional)' />
             <select name="isAdmin">
                 <option value="false">Is Admin? (Optional)</option>
