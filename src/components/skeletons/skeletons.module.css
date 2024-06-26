@@ -74,7 +74,7 @@
 }
 
 @media (max-width: 768px) {
-    .container {
+    .pagecontainer {
         flex-direction: column;
         text-align: center;
     }

@@ -151,6 +151,11 @@ export const handleGithubLogin = async () => {
     await signIn("github");
 }
 
+// LOGIN WITH GOOGLE FUNCTION
+export const handleGoogleLogin = async () => {
+    await signIn("google");
+}
+
 
 // LOGOUT FUNCTION
 export const handleLogout = async () => {

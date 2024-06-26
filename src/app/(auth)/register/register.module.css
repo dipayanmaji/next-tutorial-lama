@@ -15,9 +15,9 @@
     border-radius: 5px;
 }
 
-.github {
+.providerBtn {
     width: 100%;
-    padding: 20px;
+    padding: 15px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -27,10 +27,10 @@
     color: var(--bgSoft);
 }
 
-.github svg {
+.providerBtn svg {
     font-size: 30px;
 }
 
-.github:hover {
+.providerBtn:hover {
     opacity: 0.8;
 }
