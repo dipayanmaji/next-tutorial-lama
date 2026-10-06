@@ -35,7 +35,7 @@ export const addPost = async (prevState, formData) => {
     }
 
     try {
-        connectToDb();
+        await connectToDb();
 
         const post = await Post.findOne({ slug });
         if (post) {
@@ -70,7 +70,7 @@ export const deletePost = async (formData) => {
     const { id } = Object.fromEntries(formData);
 
     try {
-        connectToDb();
+        await connectToDb();
         await Post.findByIdAndDelete(id);
         console.log("deleted from db");
         revalidatePath("/blog");
@@ -97,7 +97,7 @@ export const addUser = async (prevState, formData) => {
     const hashedPassword = await bcryptjs.hash(password, salt);
 
     try {
-        connectToDb();
+        await connectToDb();
 
         const userFindByUsername = await User.findOne({ username });
         const userFindByEmail = await User.findOne({ email });
@@ -133,7 +133,7 @@ export const deleteUser = async (formData) => {
     const { id } = Object.fromEntries(formData);
 
     try {
-        connectToDb();
+        await connectToDb();
 
         await Post.deleteMany({ userId: id });
         await User.findByIdAndDelete(id);
@@ -148,12 +148,12 @@ export const deleteUser = async (formData) => {
 
 // LOGIN WITH GITHUB FUNCTION
 export const handleGithubLogin = async () => {
-    await signIn("github");
+    await signIn("github", { redirectTo: "/" });
 }
 
 // LOGIN WITH GOOGLE FUNCTION
 export const handleGoogleLogin = async () => {
-    await signIn("google");
+    await signIn("google", { redirectTo: "/" });
 }
 
 
@@ -165,9 +165,12 @@ export const handleLogout = async () => {
 
 // REGISTER FUNCTION
 export const register = async (previousState, formData) => {
-    const { username, email, password, passwordRepeat, img } = Object.fromEntries(formData);
+    const { password, passwordRepeat, img } = Object.fromEntries(formData);
+    // Same normalization as the register form, enforced on the server too
+    const username = (formData.get("username") || "").replace(/\s+/g, "").toLowerCase();
+    const email = (formData.get("email") || "").trim();
 
-    if (!username.trim() || !email.trim() || !password.trim() || !passwordRepeat.trim()) {
+    if (!username || !email || !password.trim() || !passwordRepeat.trim()) {
         return { error: "Fill up the all field" };
     }
 
@@ -179,7 +182,7 @@ export const register = async (previousState, formData) => {
     const hashedPassword = await bcryptjs.hash(password, salt);
 
     try {
-        connectToDb();
+        await connectToDb();
 
         const userFindByUsername = await User.findOne({ username });
         const userFindByEmail = await User.findOne({ email });
@@ -203,12 +206,14 @@ export const register = async (previousState, formData) => {
         console.log("saved to db");
 
         // AUTO SIGN IN AFTER REGISTER
-        await signIn("credentials", { username, password });
+        // Without redirectTo, next-auth redirects back to /register (the Referer)
+        // and the URL bar gets stuck there after the middleware bounces to "/"
+        await signIn("credentials", { username, password, redirectTo: "/" });
 
         // return { success: true };
     } catch (err) {
-        // console.log(err);
-        // return { error: "Something went wrong!" };
+        // A successful signIn throws NEXT_REDIRECT; let it through without logging
+        if (err.message === "NEXT_REDIRECT") throw err;
 
         console.log(err);
 
@@ -222,9 +227,10 @@ export const register = async (previousState, formData) => {
 
 // LOGIN WITH CREDENTIALS FUNCTION
 export const login = async (previousState, formData) => {
-    const { username, password } = Object.fromEntries(formData);
+    const { password } = Object.fromEntries(formData);
+    const username = (formData.get("username") || "").trim();
 
-    if (!username.trim() || !password.trim()) {
+    if (!username || !password.trim()) {
         return { error: "Fill up the all field" };
     }
 
@@ -232,7 +238,7 @@ export const login = async (previousState, formData) => {
 
         // I used verification here as well for some 1st time login issue
         // start
-        connectToDb();
+        await connectToDb();
         const user = await User.findOne({ username });
 
         if (!user) {
@@ -250,8 +256,10 @@ export const login = async (previousState, formData) => {
         // end
 
 
-        await signIn("credentials", { username, password });
+        await signIn("credentials", { username, password, redirectTo: "/" });
     } catch (err) {
+        if (err.message === "NEXT_REDIRECT") throw err;
+
         console.log(err);
 
         if (err.message.includes("CredentialsSignin")) {
