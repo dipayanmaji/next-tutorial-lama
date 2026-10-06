@@ -22,7 +22,7 @@ const LoginForm = () => {
 
     return (
         <form className={styles.form} action={formAction}>
-            <input type="text" placeholder="Username: admin" name="username" />
+            <input type="text" placeholder="Username: admin" name="username" autoCapitalize="none" autoCorrect="off" />
             <div className={styles.passwordWrapper}>
                 <input type={showPassword ? "text" : "password"} placeholder="Password: admin" name="password" />
                 <span className={styles.passwordEye} onClick={() => setShowPassword(prev => !prev)}>
